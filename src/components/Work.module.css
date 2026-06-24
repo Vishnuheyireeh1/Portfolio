@@ -1,0 +1,284 @@
+/* Tall wrapper gives the scroll runway (height set in JS); the inner block is
+   pinned so the heading + number stay while images and text scroll through. */
+.work {
+  position: relative;
+  border-top: 1px solid var(--line);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Heading — stays, top-left ──────────────────────────── */
+.head {
+  position: absolute;
+  top: clamp(80px, 13vh, 130px);
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.kicker {
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+.title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Left chapter index ─────────────────────────────────── */
+.chapters {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chapter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--muted-2);
+  opacity: 0.5;
+  transition: opacity 0.4s ease, color 0.4s ease;
+}
+.chapterNo {
+  font-variant-numeric: tabular-nums;
+}
+.chapterName {
+  font-family: var(--serif);
+  font-style: italic;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.chapterOn {
+  opacity: 1;
+  color: var(--text);
+}
+.chapterOn .chapterName {
+  max-width: 180px;
+  opacity: 1;
+}
+
+/* ── Giant rolling number, bottom-left ──────────────────── */
+.numWindow {
+  position: absolute;
+  left: 0;
+  bottom: clamp(40px, 8vh, 90px);
+  height: 1em;
+  overflow: hidden;
+  font-family: var(--serif);
+  font-size: clamp(3.6rem, 12vw, 11rem);
+  line-height: 1;
+  pointer-events: none;
+}
+.numRoll {
+  will-change: transform;
+}
+.num {
+  display: block;
+  height: 1em;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Image stage ────────────────────────────────────────── */
+.stage {
+  position: absolute;
+  inset: 0;
+}
+.shot {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  /* Keep the design's card width; a touch taller than the old 4/5 to show
+     more of the tall phone-screenshot covers. */
+  width: clamp(260px, 30vw, 440px);
+  aspect-ratio: 2 / 3;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-soft);
+  cursor: pointer;
+  will-change: transform, opacity;
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.6);
+}
+.shot img {
+  width: 100%;
+  height: 100%;
+  /* Fill the card width and anchor to the top, so each screenshot reads from
+     its header/hero down (no squashing, no side bars; the junk browser bar at
+     the very bottom of the captures falls away). */
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.shot:hover img {
+  transform: scale(1.04);
+}
+
+/* Caption overlay — only shown in the static (mobile) fallback. */
+.shotMeta {
+  display: none;
+}
+.shotName {
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+  color: #fff;
+}
+.shotTag {
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ── Right-side text (stacked, crossfading) ─────────────── */
+.texts {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(220px, 24vw, 340px);
+  display: grid;
+}
+.text {
+  grid-area: 1 / 1;
+  will-change: opacity, transform, filter;
+}
+.tag {
+  display: block;
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.lead {
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+.sub {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: var(--fs-small);
+  color: var(--text);
+  cursor: pointer;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 5px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.more:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.more span {
+  transition: transform 0.3s ease;
+}
+.more:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* ── Fallback: static stacked list (mobile / reduced motion) ── */
+.work[data-static='true'] {
+  height: auto !important;
+  padding: clamp(90px, 16vh, 180px) 0;
+}
+.work[data-static='true'] .sticky {
+  position: static;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.work[data-static='true'] .frame {
+  height: auto;
+}
+.work[data-static='true'] .head {
+  position: static;
+  margin-bottom: clamp(40px, 7vh, 72px);
+}
+.work[data-static='true'] .chapters,
+.work[data-static='true'] .numWindow {
+  display: none;
+}
+.work[data-static='true'] .stage {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+.work[data-static='true'] .shot {
+  position: relative;
+  left: auto;
+  top: auto;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.work[data-static='true'] .shotMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
+}
+.work[data-static='true'] .texts {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .chapters {
+    display: none;
+  }
+}

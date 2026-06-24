@@ -1,0 +1,59 @@
+/* Tall wrapper gives the scroll runway; the inner block is pinned. */
+.wrap {
+  position: relative;
+  height: 240vh;
+  border-top: 1px solid var(--line);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.kicker {
+  display: block;
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: clamp(28px, 5vh, 48px);
+}
+
+.quote {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-lead);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin: 0 0 clamp(32px, 5vh, 52px);
+  max-width: 24ch;
+}
+
+.mark {
+  color: var(--accent);
+}
+
+.word {
+  opacity: 0.16;
+  transition: opacity 0.05s linear;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: var(--fs-body);
+  color: var(--text);
+}
+
+.role {
+  font-size: var(--fs-small);
+  color: var(--muted);
+}

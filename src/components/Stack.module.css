@@ -1,0 +1,221 @@
+/* Tall wrapper gives the scroll runway (height set in JS); the inner block is
+   pinned so the heading stays while the roster rolls and the text crossfades. */
+.stack {
+  position: relative;
+  border-top: 1px solid var(--line);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(60px, 10vh, 104px) 0 clamp(24px, 4vh, 40px);
+}
+
+/* ── Heading — stays put ────────────────────────────────── */
+.headWrap {
+  flex: none;
+}
+
+.kicker {
+  display: block;
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Stage: rolling names (left) + definition (right) ───── */
+.stageWrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(28px, 5vw, 80px);
+  margin-top: clamp(20px, 4vh, 44px);
+}
+
+/* LEFT — the rolling roster */
+.roster {
+  position: relative;
+  flex: 1.15;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.names {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+}
+
+.nameItem {
+  height: clamp(54px, 8vh, 88px);
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.4vw, 22px);
+  padding-left: 38px;
+  transform-origin: left center;
+  will-change: transform, opacity;
+}
+
+/* small logo beside each name — theme ink, brand colour when active */
+.nLogo {
+  flex: none;
+  width: clamp(22px, 2.2vw, 30px);
+  height: clamp(22px, 2.2vw, 30px);
+  background-color: var(--text);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.35s ease;
+}
+
+.nName {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-display);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.nameItem[data-active='true'] .nLogo {
+  background-color: var(--brand);
+}
+
+/* hidden on desktop — used only in the static fallback layout */
+.nNote {
+  display: none;
+}
+
+/* RIGHT — number + category + crossfading definition */
+.detail {
+  flex: 0.85;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(18px, 3vh, 30px);
+}
+
+.num {
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--muted-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.notes {
+  position: relative;
+  min-height: clamp(180px, 32vh, 340px);
+}
+
+.note {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 46ch;
+  will-change: opacity, transform, filter;
+}
+
+.noteCat {
+  display: block;
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.noteText {
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Fallback: static stacked list (mobile / reduced motion) ── */
+.stack[data-static='true'] {
+  height: auto !important;
+}
+.stack[data-static='true'] .sticky {
+  position: static;
+  height: auto;
+  display: block;
+  overflow: visible;
+  padding: clamp(90px, 16vh, 180px) 0;
+}
+.stack[data-static='true'] .stageWrap {
+  display: block;
+  margin-top: clamp(36px, 6vh, 64px);
+}
+.stack[data-static='true'] .roster {
+  overflow: visible;
+  height: auto;
+}
+.stack[data-static='true'] .detail {
+  display: none;
+}
+.stack[data-static='true'] .names {
+  position: static;
+  transform: none !important;
+}
+.stack[data-static='true'] .nameItem {
+  height: auto;
+  flex-wrap: wrap;
+  padding: 22px 0;
+  border-top: 1px solid var(--line);
+  transform: none !important;
+  opacity: 1 !important;
+}
+.stack[data-static='true'] .nameItem[data-active='true'] .nLogo,
+.stack[data-static='true'] .nLogo {
+  background-color: var(--brand);
+}
+.stack[data-static='true'] .nName {
+  font-size: clamp(1.5rem, 7vw, 2.1rem);
+  white-space: normal;
+}
+.stack[data-static='true'] .nNote {
+  display: block;
+  flex-basis: 100%;
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nLogo {
+    transition: none;
+  }
+}

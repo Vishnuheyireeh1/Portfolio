@@ -1,0 +1,90 @@
+.dot,
+.ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* The violet accent dot — sits at the exact pointer and leads the ring. */
+.dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(185, 164, 255, 0.9);
+  transition: opacity 0.2s ease;
+}
+.hidden {
+  opacity: 0;
+}
+
+/* Default cursor: a big dot that auto-contrasts with the theme.
+   mix-blend difference → silver/white on the dark page, black on the
+   light page, and it inverts whatever it passes over. */
+.ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: none;
+  mix-blend-mode: difference;
+  transition:
+    width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.arrow {
+  font-size: 1.1rem;
+  line-height: 1;
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.25s ease, transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.view .arrow,
+.open .arrow {
+  opacity: 1;
+  transform: none;
+}
+
+/* over project media → big dark circle + ↗ */
+.view {
+  width: 92px;
+  height: 92px;
+  margin: -46px 0 0 -46px;
+  background: #0c0a12;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  mix-blend-mode: normal;
+}
+.view .arrow {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+/* over menu options → accent circle + → */
+.open {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  mix-blend-mode: normal;
+  box-shadow: 0 10px 30px -8px rgba(185, 164, 255, 0.55);
+}
+.open .arrow {
+  color: #0c0a12;
+  font-weight: 600;
+}
+
+@media (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}

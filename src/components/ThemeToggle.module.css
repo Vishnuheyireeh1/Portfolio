@@ -1,0 +1,65 @@
+.btn {
+  position: fixed;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vw, 32px);
+  z-index: 80;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.track {
+  display: block;
+  width: 64px;
+  height: 34px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.btn:hover .track {
+  border-color: var(--line-strong);
+}
+
+.knob {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0c0a12;
+  transform: translateX(0);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 18px -6px rgba(185, 164, 255, 0.7);
+}
+.knob.light {
+  transform: translateX(30px);
+}
+
+.moon,
+.sun {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.moon {
+  opacity: 1;
+  transform: rotate(0);
+}
+.sun {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+.light .moon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+.light .sun {
+  opacity: 1;
+  transform: rotate(0);
+}

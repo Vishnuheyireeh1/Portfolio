@@ -1,0 +1,81 @@
+.contact {
+  padding: clamp(90px, 16vh, 190px) 0 clamp(70px, 12vh, 130px);
+  border-top: 1px solid var(--line);
+}
+
+.kicker {
+  display: block;
+  font-size: var(--fs-kicker);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  max-width: 18ch;
+  margin: 0 0 clamp(40px, 7vh, 72px);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 18px 40px;
+  margin-bottom: 48px;
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--serif);
+  font-size: var(--fs-h3);
+  color: var(--text);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 6px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.email:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.emailArrow {
+  font-size: 0.7em;
+  transition: transform 0.3s ease;
+}
+.email:hover .emailArrow {
+  transform: translate(3px, -3px);
+}
+
+.note {
+  font-size: var(--fs-small);
+  color: var(--muted);
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.social {
+  padding: 9px 18px;
+  font-size: var(--fs-small);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.social:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
