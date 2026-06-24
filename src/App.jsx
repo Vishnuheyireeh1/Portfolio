@@ -1,5 +1,4 @@
 import { useLenis } from './hooks/useLenis'
-import Background from './three/Background'
 import CursorSmoke from './components/CursorSmoke'
 import Cursor from './components/Cursor'
 import ThemeToggle from './components/ThemeToggle'
@@ -21,7 +20,6 @@ export default function App() {
 
   return (
     <>
-      <Background />
       <CursorSmoke />
       <div className="vignette" aria-hidden="true" />
       <Cursor />

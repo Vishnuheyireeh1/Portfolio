@@ -89,18 +89,8 @@ body {
 
 body {
   min-height: 100svh;
-  background:
-    radial-gradient(120% 80% at 80% -10%, rgba(124, 140, 255, 0.1), transparent 60%),
-    radial-gradient(120% 90% at 0% 110%, rgba(185, 164, 255, 0.08), transparent 55%),
-    var(--bg);
+  background: var(--bg);
   overflow-x: hidden;
-}
-
-:root[data-theme='light'] body {
-  background:
-    radial-gradient(120% 80% at 82% -10%, rgba(120, 95, 255, 0.14), transparent 60%),
-    radial-gradient(120% 90% at 0% 110%, rgba(255, 150, 90, 0.1), transparent 55%),
-    var(--bg);
 }
 
 /* Soft vignette that sits over the canvas but behind the content. */
