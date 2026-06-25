@@ -1,0 +1,72 @@
+/* Intro preloader: a full-screen panel with a big staggered "HELLO" that flies
+   up + shrinks onto the small top-centre HelloMark while the panel fades away.
+   Swap --panel / --ink below to recolour. Geometry (gap / letter-spacing / dy)
+   matches HelloMark so the fly-in lands exactly. */
+.loader {
+  --panel: #0b0b12;
+  --ink: #f4f2fa;
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel);
+  transition: background-color 1.3s ease;
+}
+/* Panel dissolves to reveal the page as the word docks. */
+.dock {
+  background-color: transparent;
+  pointer-events: none;
+}
+
+.word {
+  display: flex;
+  align-items: center;
+  gap: 0.16em;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 10vw, 7rem);
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  transform-origin: center center;
+  /* slow, smooth ease for the fly-in */
+  transition: transform 1.6s cubic-bezier(0.62, 0, 0.2, 1), color 1.3s ease, opacity 1.3s ease;
+  will-change: transform;
+}
+/* As it docks, fade toward the small mark's tone so the handoff is seamless. */
+.dock .word {
+  color: var(--text);
+  opacity: 0.5;
+}
+
+.letter {
+  display: inline-block;
+  transform: translateY(var(--dy));
+  animation: letterIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--delay);
+}
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--dy) + 0.55em));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(var(--dy));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    animation-duration: 0.01s;
+  }
+  .word {
+    transition-duration: 0.5s;
+  }
+  .loader {
+    transition-duration: 0.5s;
+  }
+}

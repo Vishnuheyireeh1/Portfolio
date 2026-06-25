@@ -1,4 +1,6 @@
 import { useLenis } from './hooks/useLenis'
+import Preloader from './components/Preloader'
+import HelloMark from './components/HelloMark'
 import CursorSmoke from './components/CursorSmoke'
 import Cursor from './components/Cursor'
 import ThemeToggle from './components/ThemeToggle'
@@ -20,11 +22,13 @@ export default function App() {
 
   return (
     <>
+      <Preloader />
       <CursorSmoke />
       <div className="vignette" aria-hidden="true" />
       <Cursor />
       <ThemeToggle />
       <Clock />
+      <HelloMark />
       <Header />
       <main>
         <Hero />

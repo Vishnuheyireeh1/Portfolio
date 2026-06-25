@@ -114,6 +114,17 @@ body {
   );
 }
 
+/* The top "HELLO" mark stays hidden until the intro preloader docks into it
+   (the preloader adds `intro-done` to <html> as its word lands). It keeps its
+   layout while hidden so the fly-in can measure where to land. */
+[data-hello-mark] {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+html.intro-done [data-hello-mark] {
+  opacity: 0.46;
+}
+
 /* Luminous smoke that trails the cursor (both themes). */
 .cursor-smoke {
   position: fixed;

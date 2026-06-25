@@ -1,0 +1,39 @@
+/* Small "HELLO" pinned top-centre — mirrors the Clock at the bottom-centre.
+   Same serif + stagger as the intro word, just small. It starts hidden and is
+   revealed only once the intro preloader's HELLO flies in (see index.css:
+   [data-hello-mark] opacity is driven by html.intro-done). */
+.mark {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.16em;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 0.92rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.letter {
+  display: inline-block;
+  transform: translateY(var(--dy));
+}
+
+/* Small screens: the floating "Get in touch" is hidden (see Header), so the
+   HELLO takes its top-right place instead of the centre. */
+@media (max-width: 600px) {
+  .mark {
+    left: auto;
+    right: clamp(16px, 5vw, 26px);
+    top: 26px;
+    transform: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+  }
+}

@@ -209,12 +209,16 @@
   box-shadow: 0 16px 44px -16px rgba(185, 164, 255, 0.6);
 }
 
+@media (max-width: 600px) {
+  /* On phones the floating CTA is dropped (still reachable inside the menu) so
+     the HELLO mark can take its top-right place. */
+  .contact {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .role {
     display: none;
-  }
-  .contact {
-    padding: 10px 16px;
-    font-size: 0.84rem;
   }
 }
