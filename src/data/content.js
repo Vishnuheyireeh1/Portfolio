@@ -8,6 +8,7 @@
 import hospitalityErpCover from '../assets/HospitalityErp.jpeg'
 import tuckonCover from '../assets/Tuckon.jpeg'
 import naambCover from '../assets/Naamb.jpeg'
+import aiRecCover from '../assets/Ai-rec2.jpeg'
 // Case-study (modal) screenshots.
 import erpShot1 from '../assets/Erp1.png'
 import erpShot2 from '../assets/Erp2.png'
@@ -15,6 +16,8 @@ import tuckonShot2 from '../assets/Tuckon2.png'
 import tuckonShot3 from '../assets/Tuckon3.png'
 import naambShot2 from '../assets/Naamb2.png'
 import naambShot3 from '../assets/Naamb3.png'
+import aiRecShot1 from '../assets/Ai-rec1.jpeg'
+import aiRecShot3 from '../assets/Ai-rec3.jpeg'
 
 export const content = {
   meta: {
@@ -73,6 +76,34 @@ export const content = {
     kicker: 'Selected Work',
     title: 'Things I’ve built',
     projects: [
+      {
+        slug: 'ai-receptionist',
+        title: 'AI Receptionist',
+        year: '2026',
+        tag: 'PERN · AI Voice · Multi-tenant SaaS',
+        desc: 'An AI receptionist that answers a clinic’s calls, books appointments 24/7 — plus a full clinic-management dashboard.',
+        hue: 262,
+        cover: aiRecCover,
+        detail: {
+          tagline: 'A virtual front desk that never sleeps — bolted onto a full clinic-management system.',
+          role: 'Full-stack developer',
+          overview:
+            'An AI receptionist for clinics: patients call or text and the AI greets them (in English or Malayalam), understands they want an appointment, checks the doctor’s real availability and books — or cancels — it, saving every conversation automatically. Underneath sits a complete clinic-management platform: doctors, services, medicines, appointments, patient records and prescriptions. It’s multi-tenant — a super admin spins up new clinics, each with its own login, settings and AI — so it sells as SaaS. The AI and human staff share the exact same booking engine, so nothing ever falls out of sync.',
+          features: [
+            'AI receptionist — answers calls (Retell voice) and messages (OpenAI chat), books and cancels appointments 24/7',
+            'Bilingual — handles patients in English or Malayalam, with every conversation saved automatically',
+            'Shared booking engine — AI and front-desk staff book against the same real-time availability, never out of sync',
+            'Clinic management — doctors, schedules, services, time-off, medicines and waitlists',
+            'Appointments — book, reschedule, no-show, recurring and a calendar view',
+            'Patients — records, history, vitals, documents and allergies',
+            'Prescriptions doctors write and print',
+            'Multi-tenant SaaS — super admin creates clinics, each with its own login, settings and AI',
+            'Notifications across in-app, email and SMS, with two-way Google Calendar sync',
+          ],
+          tech: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Retell AI', 'OpenAI', 'Google Calendar', 'Twilio', 'JWT'],
+          screenshots: [aiRecShot1, aiRecShot3],
+        },
+      },
       {
         slug: 'hospitality-erp',
         title: 'Hotel Ops & Accounts ERP',
