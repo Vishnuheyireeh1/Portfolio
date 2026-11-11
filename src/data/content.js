@@ -18,6 +18,15 @@ import naambShot2 from '../assets/Naamb2.png'
 import naambShot3 from '../assets/Naamb3.png'
 import aiRecShot1 from '../assets/Ai-rec1.jpeg'
 import aiRecShot3 from '../assets/Ai-rec3.jpeg'
+import boutiqueCover from '../assets/Boutique.jpeg'
+import boutiqueShot1 from '../assets/Boutique2.jpeg'
+import boutiqueShot2 from '../assets/Boutique3.jpeg'
+import boutiqueErpCover from '../assets/BoutiqueErp.jpeg'
+import boutiqueErpShot1 from '../assets/BoutiqueErp2.png'
+import boutiqueErpShot2 from '../assets/BoutiqueErp3.png'
+import gymCover from '../assets/Gym.jpeg'
+import gymShot1 from '../assets/Gym2.jpeg'
+import gymShot2 from '../assets/Gym3.jpeg'
 
 export const content = {
   meta: {
@@ -76,6 +85,90 @@ export const content = {
     kicker: 'Selected Work',
     title: 'Things I’ve built',
     projects: [
+      {
+        slug: 'boutique-ecommerce',
+        title: 'Boutique E-commerce Website',
+        year: '2026',
+        tag: 'React · Express · Postgres · E-commerce',
+        desc: 'A designer boutique online — shop ready-made, or have the same piece stitched to your own measurements.',
+        hue: 356,
+        cover: boutiqueCover,
+        detail: {
+          tagline: 'Made to your measure — a boutique storefront where custom stitching is part of the checkout.',
+          role: 'Full-stack developer',
+          overview:
+            'A designer boutique’s own platform, built to replace the templated SaaS site it was running on. Customers browse sarees, blouses, kurtis and lehengas, then choose between a ready-made piece and the same piece stitched to their measurements — the measurement form changes per category and is checked again on the server before an order is taken. Underneath sit Razorpay payments, server-generated PDF bills and a fashion-academy section. The admin side is built phone-first in plain words, so shop staff who don’t work with computers can run orders, products and content without being taught a dashboard.',
+          features: [
+            'Storefront with categories and sub-categories, plus size, colour, price and “ready to ship / stitched to your size” filters',
+            'Custom stitching — measurement rules per category, saved measurements on the account, and guide videos for each field',
+            'Razorpay checkout with server-created orders, HMAC verification and a webhook',
+            'PDF bills generated on the server for paid orders',
+            'Customer accounts with Google sign-in alongside email, plus order tracking',
+            'Fashion Design Academy section with courses and enquiries',
+            'Admin panel written for non-technical staff — next-step buttons instead of raw status dropdowns',
+            'Banners, categories, products, orders, enquiries and page text all editable from admin',
+          ],
+          tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'Prisma', 'PostgreSQL', 'Razorpay', 'Railway', 'Cloudflare'],
+          screenshots: [boutiqueShot1, boutiqueShot2],
+        },
+      },
+      {
+        slug: 'boutique-erp',
+        title: 'Boutique ERP',
+        year: '2026',
+        tag: 'React · Express · PostgreSQL · ERP',
+        desc: 'The system the boutique actually runs on — counter billing, the stitching workshop, stock, staff and the books.',
+        hue: 342,
+        cover: boutiqueErpCover,
+        detail: {
+          tagline: 'One app for the whole shop: scan, bill, stitch, pay, and close the books.',
+          role: 'Full-stack developer',
+          overview:
+            'A custom ERP that runs a boutique’s entire day. The counter bills by barcode; the workshop follows every garment from booking to hand-over with the customer’s measurements, the tailor assigned and what that tailor earns; stock is an append-only ledger so a value is never typed in by hand; and the accounts build themselves out of the documents, so the shop’s accountant gets a trial balance and a balance sheet without anyone doing double entry. It prints on the shop’s existing dot-matrix printer and is written throughout in the words the staff already use.',
+          features: [
+            'Counter billing — barcode scan, a fast keyboard-only mode, split payments and credit',
+            'Stitching jobs — measurements per garment, tailor assignment, ready-by dates, job costing and profit per job',
+            'Brand orders — stitching under other labels, with part deliveries, a bill per delivery and brand statements',
+            'Inventory as an append-only ledger — stock value and average cost written by one engine, never edited directly',
+            'Purchases, suppliers, payments, returns and supplier statements',
+            'Staff with monthly and per-piece pay, payslips and tailor settlements',
+            'Training institute — students, batches, fees and receipts',
+            'Expenses, day book, cash counts and profit & loss',
+            'Double-entry accounts generated from the documents, with trial balance and balance sheet',
+            'Excel export and a date range on every list, barcode labels, and dot-matrix or PDF bills',
+            'Nightly database backups with a restore script that was tested against a scratch database',
+          ],
+          tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express', 'Prisma', 'PostgreSQL', 'ExcelJS', 'PDFKit'],
+          screenshots: [boutiqueErpShot1, boutiqueErpShot2],
+        },
+      },
+      {
+        slug: 'gym-website',
+        title: 'Gym Website',
+        year: '2026',
+        tag: 'React · Tailwind · Motion',
+        desc: 'A gym’s site built around the questions a walk-in actually asks — and a WhatsApp button beside every answer.',
+        hue: 36,
+        cover: gymCover,
+        detail: {
+          tagline: 'Real prices, real trainers, no hidden charges — a gym site that gets people through the door.',
+          role: 'Designer & front-end developer',
+          overview:
+            'A single-page site for a local gym, built section by section around what someone actually wants to know before they join: who will train me, what does it really cost, what equipment is there, and does it work for people like me. Membership pricing comes straight from the gym’s own plan manager and shows a per-month figure for every duration, so nothing reads as hidden. The enquiry form doesn’t vanish into an inbox — it composes a WhatsApp message with the person’s goal already filled in, which is how this gym’s customers get in touch anyway.',
+          features: [
+            'Membership plans with the gym’s real pricing — two training types, six durations, per-month equivalents and a couple rate',
+            'Trainers, member transformations and Google reviews',
+            'Equipment and gallery sections built from the gym’s own photos',
+            'Enquiry form that opens a pre-filled WhatsApp message, plus floating call and WhatsApp buttons',
+            'Google Maps embed and one-tap directions to the exact pin',
+            'Address, phone, timings and plans all driven from one data file the gym can edit',
+            'Scroll-reveal motion throughout, built mobile-first',
+            'Local SEO — title, metadata and details matched to the Google Business Profile',
+          ],
+          tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Google Maps'],
+          screenshots: [gymShot1, gymShot2],
+        },
+      },
       {
         slug: 'ai-receptionist',
         title: 'AI Receptionist',
